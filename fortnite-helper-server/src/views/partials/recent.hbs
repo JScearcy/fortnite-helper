@@ -1,0 +1,62 @@
+<h3 class="text-center">Recent Stats</h1>
+<canvas id="killChart" width="400" height="400"></canvas>
+<canvas id="trnChart" width="400" height="400"></canvas>
+<script id="killData">
+    const ctx = document.getElementById("killChart");
+    const labels = [
+        {{#each this}}
+        '{{dateCollected}}',
+        {{/each}}
+    ];
+    const kills = [
+        {{#each this}}
+        {{kills}},
+        {{/each}}
+    ].reverse();
+    const trnRating = [
+        {{#each this}}
+        {{trnRating}},
+        {{/each}}
+    ].reverse();
+    const myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    data: kills,
+                    label: "Match kills",
+                    borderColor: "#3e95cd",
+                    fill: false,
+                    pointStyle: 'circle',
+                    yAxisID: 'kills',
+                },
+                {
+                    data: trnRating,
+                    label: "TRN Rating",
+                    borderColor: '#8e5ea2',
+                    fill: false,
+                    pointStyle: 'rectangle',
+                    yAxisID: 'trn',
+                },
+            ],
+        },
+        options: {
+            title: {
+                display: true,
+                text: 'Trends'
+            },
+            scales: {
+                yAxes: [{
+                    id: 'kills',
+                    type: 'linear',
+                    position: 'left',
+                }, {
+                    id: 'trn',
+                    type: 'linear',
+                    position: 'right',
+                }],
+            }
+        }
+    });
+</script>
