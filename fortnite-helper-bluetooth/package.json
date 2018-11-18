@@ -23,6 +23,8 @@
     "@nestjs/common": "^5.1.0",
     "@nestjs/core": "^5.1.0",
     "bluetooth-serial-port": "^2.1.7",
+    "debug": ">=3.1.0",
+    "merge": ">=1.2.1",
     "noble": "^1.9.1",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.2.2",
