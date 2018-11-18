@@ -1,6 +1,7 @@
 import * as btsp from 'bluetooth-serial-port';
 
-const address = '98d332113529';
+const address = process.env.SIGN_ADDRESS;
+if (!address) throw Error('Must provide the environment variable SIGN_ADDRESS');
 export const serial = new btsp.BluetoothSerialPort();
 
 serial.findSerialPortChannel(address,
